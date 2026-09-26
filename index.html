@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- ============================================================
-     CENTURY FUNERAL SERVICES — Complete 5 Page Website
-     Pages: Home · Services · Our Story · Pre-Planning · Contact
-     ============================================================ -->
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0f14">
@@ -36,7 +33,6 @@
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%230a0f14' stroke='%23c9a24a' stroke-width='4'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23c9a24a' font-family='Georgia'>C</text></svg>">
 
-<!-- ================= STRUCTURED DATA ================= -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -155,7 +151,6 @@ h2{font-size:clamp(2rem,4.2vw,3.1rem)}
 h3{font-size:clamp(1.3rem,2.4vw,1.7rem)}
 p{color:var(--muted)}
 .lead{font-size:1.08rem;color:#bcc9d3;max-width:66ch}
-.italic{font-family:var(--serif);font-style:italic;color:var(--gold-2)}
 .section-head{max-width:720px;margin-bottom:64px}
 .section-head.center{margin-inline:auto;text-align:center}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:999px;border:1px solid transparent;font-size:13.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .4s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden}
@@ -200,9 +195,9 @@ p{color:var(--muted)}
   .nav-phone span.num{display:none}
 }
 @media(max-width:520px){.nav-cta .btn{display:none}}
-.page{display:none;animation:pageIn .7s ease both}
-.page.active{display:block}
-@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.page{display:none}
+.page.active{display:block;animation:pageIn .5s ease both}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
 .hero-bg{position:absolute;inset:-6%;z-index:-2;background-color:#0b131b;background-image:radial-gradient(ellipse at 20% 20%,rgba(201,162,74,.10),transparent 55%),linear-gradient(180deg,rgba(8,13,18,.72),rgba(8,13,18,.86) 55%,#0a0f14 100%),url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=80');background-size:cover,cover,cover;background-position:center;animation:kenburns 28s ease-in-out infinite alternate}
 @keyframes kenburns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.14) translate(-1.5%,-1.5%)}}
@@ -320,18 +315,28 @@ p{color:var(--muted)}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}}
 .form-note{font-size:12.5px;color:var(--muted-2);margin-top:16px}
 .form-success{display:none;margin-top:20px;padding:16px 20px;border-radius:var(--r-sm);border:1px solid rgba(92,214,138,.4);background:rgba(92,214,138,.08);color:#a8e8c2;font-size:.92rem}
-.form-success.show{display:block;animation:pageIn .5s ease both}
+.form-success.show{display:block}
 .tile{border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;background:var(--glass);transition:.45s}
 .tile:hover{border-color:var(--line-gold);transform:translateY(-5px)}
 .tile h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:9px}
 .tile p,.tile a{font-size:.92rem;color:var(--muted);text-decoration:none}
 .tile a:hover{color:var(--gold-2)}
 .tile .k{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .95s cubic-bezier(.2,.8,.2,1),transform .95s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}
-.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-bg{animation:none}.embers{display:none}}
+
+/* =========================================================
+   REVEAL — CONTENT IS VISIBLE BY DEFAULT.
+   Animation only applies once JS confirms it is running.
+   ========================================================= */
+.reveal{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+html.js .reveal{opacity:0;transform:translateY(24px)}
+html.js .reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){
+  html.js .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .hero-bg{animation:none}.embers{display:none}
+}
+
 .chat-launcher{position:fixed;right:24px;bottom:24px;z-index:950;width:62px;height:62px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--gold-2),var(--gold) 50%,var(--gold-3));display:grid;place-items:center;box-shadow:0 16px 40px rgba(201,162,74,.34);transition:.45s cubic-bezier(.2,.8,.2,1)}
 .chat-launcher:hover{transform:scale(1.08) translateY(-3px)}
 .chat-launcher svg{width:27px;height:27px;fill:#0a0f14}
@@ -1573,9 +1578,6 @@ p{color:var(--muted)}
   </div>
 </footer>
 
-<!-- =========================================================
-     BACK TO TOP
-     ========================================================= -->
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
 <!-- =========================================================
@@ -1595,11 +1597,8 @@ p{color:var(--muted)}
     </div>
     <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
   </div>
-
   <div class="chat-body" id="chatBody" aria-live="polite"></div>
-
   <div class="chat-quick" id="chatQuick"></div>
-
   <form class="chat-input" id="chatForm" autocomplete="off">
     <label class="sr-only" for="chatText">Type your question</label>
     <input type="text" id="chatText" placeholder="Ask about services, costs, next steps…" aria-label="Type your question">
@@ -1611,16 +1610,27 @@ p{color:var(--muted)}
 
 <script>
 /* =========================================================
-   0. HELPERS
+   HELPERS
    ========================================================= */
 const $  = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* =========================================================
-   1. ROUTER
+   ROUTER
    ========================================================= */
 const PAGES = ['home','services','about','preplanning','contact'];
+
+function documentTitleFor(page){
+  const titles = {
+    home: 'Century Funeral Services | Compassionate Funeral, Cremation & Memorial Care — Available 24/7',
+    services: 'Our Services | Funeral, Cremation, Burial & Repatriation — Century Funeral Services',
+    about: 'Our Story | Family-Run Funeral Home Since 1999 — Century Funeral Services',
+    preplanning: 'Pre-Planning & Pricing | Funeral Plans from $3,450 — Century Funeral Services',
+    contact: 'Contact Us | 24-Hour Funeral Care Line — Century Funeral Services'
+  };
+  return titles[page] || titles.home;
+}
 
 function route(){
   const hash = (location.hash || '#/home').replace('#/','').toLowerCase();
@@ -1639,21 +1649,10 @@ function route(){
   requestAnimationFrame(() => initReveals());
 }
 
-function documentTitleFor(page){
-  const titles = {
-    home: 'Century Funeral Services | Compassionate Funeral, Cremation & Memorial Care — Available 24/7',
-    services: 'Our Services | Funeral, Cremation, Burial & Repatriation — Century Funeral Services',
-    about: 'Our Story | Family-Run Funeral Home Since 1999 — Century Funeral Services',
-    preplanning: 'Pre-Planning & Pricing | Funeral Plans from $3,450 — Century Funeral Services',
-    contact: 'Contact Us | 24-Hour Funeral Care Line — Century Funeral Services'
-  };
-  return titles[page] || titles.home;
-}
-
 window.addEventListener('hashchange', route);
 
 /* =========================================================
-   2. HEADER / NAV
+   HEADER / NAV
    ========================================================= */
 const header = $('#header');
 const burger = $('#burger');
@@ -1681,11 +1680,15 @@ navLinks.addEventListener('click', e => {
 $('#toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* =========================================================
-   3. REVEAL ON SCROLL
+   REVEAL — content visible by default, animated only if JS runs
    ========================================================= */
 let revealObserver;
 function initReveals(){
-  if (REDUCED){ $$('.reveal').forEach(el => el.classList.add('in')); return; }
+  const els = $$('.reveal');
+  if (REDUCED || !('IntersectionObserver' in window)){
+    els.forEach(el => el.classList.add('in'));
+    return;
+  }
   if (!revealObserver){
     revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(en => {
@@ -1694,19 +1697,26 @@ function initReveals(){
           revealObserver.unobserve(en.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.04, rootMargin: '0px 0px -20px 0px' });
   }
-  $$('.reveal:not(.in)').forEach(el => revealObserver.observe(el));
+  els.forEach(el => {
+    if (el.classList.contains('in')) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0){
+      el.classList.add('in');
+    } else {
+      revealObserver.observe(el);
+    }
+  });
 }
 
 /* =========================================================
-   4. EMBERS (hero particles)
+   EMBERS
    ========================================================= */
 (function makeEmbers(){
   const box = $('#embers');
   if (!box || REDUCED) return;
-  const count = 22;
-  for (let i = 0; i < count; i++){
+  for (let i = 0; i < 22; i++){
     const s = document.createElement('i');
     const size = (Math.random() * 2.4 + 1.4).toFixed(1);
     s.style.left = Math.random() * 100 + '%';
@@ -1719,7 +1729,7 @@ function initReveals(){
 })();
 
 /* =========================================================
-   5. CANDLE WALL
+   CANDLE WALL
    ========================================================= */
 const CANDLE_TOTAL = 16;
 const CANDLE_KEY = 'century_candles_v1';
@@ -1773,7 +1783,7 @@ function updateCandleCount(n){
 }
 
 /* =========================================================
-   6. ACCORDION
+   ACCORDION
    ========================================================= */
 document.addEventListener('click', e => {
   const btn = e.target.closest('.acc-btn');
@@ -1782,7 +1792,6 @@ document.addEventListener('click', e => {
   const panel = btn.nextElementSibling;
   const isOpen = item.classList.contains('open');
 
-  // close siblings in the same accordion
   $$('.acc-item', item.parentElement).forEach(i => {
     i.classList.remove('open');
     i.querySelector('.acc-btn').setAttribute('aria-expanded', 'false');
@@ -1797,7 +1806,7 @@ document.addEventListener('click', e => {
 });
 
 /* =========================================================
-   7. FORMS (demo)
+   FORMS (demo)
    ========================================================= */
 function wireForm(formId, successId){
   const form = document.getElementById(formId);
@@ -1810,7 +1819,6 @@ function wireForm(formId, successId){
       else f.style.borderColor = '';
     });
     if (!valid) return;
-
     const note = document.getElementById(successId);
     if (note) note.classList.add('show');
     form.reset();
@@ -1821,88 +1829,30 @@ wireForm('preplanForm', 'preplanSuccess');
 wireForm('contactForm', 'contactSuccess');
 
 /* =========================================================
-   8. CHATBOT — Knowledge base drawn entirely from site content
+   CHATBOT
    ========================================================= */
 const KNOWLEDGE = {
-  greeting: {
-    patterns: ['hi','hello','hey','good morning','good afternoon','good evening','start','help me'],
-    answer: "Hello, and thank you for reaching out. I’m here to help with anything you need to know about Century Funeral Services — our services, costs, pre-planning, or simply what to do next. What would you like to ask?"
-  },
-  cost: {
-    patterns: ['cost','price','prices','pricing','how much','afford','expensive','cheap','fee','fees','money','pay','payment','budget','plan cost','funeral cost'],
-    answer: "Our plans start at three clear price points:<br><br>• <b>Essential</b> — $3,450 (direct cremation, no ceremony)<br>• <b>Serene</b> — $6,900 (full service, visitation, hearse, reception, live streaming)<br>• <b>Legacy</b> — $11,500 (everything, premium casket, two limousines, headstone allowance, 5-year grave care)<br><br>Every quote is itemised in writing with no hidden fees. <b>Interest-free payment plans over 12 months</b> are available on all plans. If cost is a concern, please tell us — we have never turned a family away over money. You can call <a href='tel:0800000000'>0800 000 000</a> or visit our <a href='#/preplanning'>Pre-Planning page</a>."
-  },
-  services: {
-    patterns: ['service','services','what do you do','offer','options','arrange','help with','provide','do you do'],
-    answer: "We handle every kind of farewell, including:<br><br>• Traditional funeral service (church, chapel, graveside)<br>• Cremation — attended, unattended, or direct<br>• Burial &amp; graveside, including natural woodland burial<br>• Memorial &amp; celebration of life<br>• Repatriation &amp; long-distance transfer (domestic and overseas)<br>• Care &amp; preparation of your loved one<br>• Flowers, stationery, keepsakes, coffins &amp; urns<br>• Wake, venue &amp; catering<br>• Twelve months of grief support &amp; counselling<br><br>See the full detail on our <a href='#/services'>Services page</a>."
-  },
-  cremation: {
-    patterns: ['cremation','cremate','cremated','ashes','urn','scatter','scattering'],
-    answer: "Yes, we arrange cremation in several forms:<br><br>• <b>Attended cremation</b> — a full service, then committal<br>• <b>Unattended cremation</b> — the service takes place separately<br>• <b>Direct cremation</b> — simple, dignified, no ceremony (from $3,450)<br><br>We offer over 60 urns, keepsake jewellery, scattering tubes and memorial plaques. Ashes can be scattered, interred, kept at home, or divided between family members in matching keepsakes. Ask us anything — there is no wrong question here."
-  },
-  burial: {
-    patterns: ['burial','bury','grave','graveside','cemetery','plot','headstone','natural burial','woodland'],
-    answer: "We arrange burial in any cemetery, or in a natural woodland or meadow burial ground if you prefer. We handle plot selection, grave preparation, headstones, kerbing, inscriptions and long-term grave maintenance. The <b>Legacy plan</b> includes a $1,500 headstone allowance and five years of grave care. Would you like us to explain the difference between a traditional burial and a natural burial?"
-  },
-  repatriation: {
-    patterns: ['repatriation','repatriate','overseas','another country','abroad','fly','flight','transport','bring home','international'],
-    answer: "Yes — we bring loved ones home from overseas, and take them to rest anywhere in the world. Our repatriation team handles embalming to international standards, consular and customs documentation, airline booking, sealed transfer caskets, and collection at the destination airport. This usually takes 5–10 days, and we keep you updated at every stage so you are never left wondering where they are. Call <a href='tel:0800000000'>0800 000 000</a> and ask for our repatriation team."
-  },
-  availability: {
-    patterns: ['24','hour','available','open','when','time','night','weekend','holiday','emergency','now','urgent','today'],
-    answer: "We are available <b>24 hours a day, 365 days a year</b> — including weekends and public holidays. Our care line <a href='tel:0800000000'>0800 000 000</a> is always answered by a real, trained care director. Never a machine, never a queue, never a call centre. If someone has just died, please call us rather than using the website form."
-  },
-  firststeps: {
-    patterns: ['what do i do','first step','next step','someone died','died at home','just died','passed away','what now','how do i start','begin'],
-    answer: "First — I’m so sorry. Take a breath. Here is what to do:<br><br>1. <b>Call us on <a href='tel:0800000000'>0800 000 000</a></b> — any hour, day or night. A care director will answer, listen, and tell you exactly what to do.<br>2. If the death was unexpected, call emergency services first, then call us.<br>3. We will come and bring your loved one into our care, discreetly and with dignity.<br>4. After that, we plan everything together, at your pace.<br><br>You do not need to know what you want yet. Just call. That is enough."
-  },
-  preplanning: {
-    patterns: ['preplan','pre-plan','pre plan','plan ahead','prepaid','prepay','arrange in advance','future','lock price','planning'],
-    answer: "Pre-planning means choosing your wishes now, so your family is never left guessing. Families who pre-plan save an average of <b>32%</b> and lock in today’s prices. You choose music, readings, flowers, dress, burial or cremation — we write it down and keep it safe. Plans can be changed free of charge at any time.<br><br>Request a <b>free, no-obligation consultation</b> on our <a href='#/preplanning'>Pre-Planning page</a>, or call <a href='tel:0800000000'>0800 000 000</a>."
-  },
-  grief: {
-    patterns: ['grief','grieving','counselling','counseling','support','bereavement','therapy','cope','coping','alone','after the funeral'],
-    answer: "Every family we serve receives <b>twelve months of complimentary grief support</b>, and it is not an add-on — it is part of how we care for you. This includes:<br><br>• One-to-one counselling (face-to-face or by phone)<br>• Family sessions<br>• Children’s and teenagers’ bereavement support<br>• Monthly remembrance evenings at our chapel<br>• A 24-hour listening line for the first year<br><br>There is no charge, no limit on sessions, and no pressure to talk. You can call <a href='tel:0800000000'>0800 000 000</a> any time."
-  },
-  contact: {
-    patterns: ['contact','call','phone','number','email','reach','address','where are you','location','visit','find you'],
-    answer: "You can reach us any time:<br><br>• <b>24-hour care line:</b> <a href='tel:0800000000'>0800 000 000</a><br>• <b>Email:</b> care@centuryfuneralservices.com<br>• <b>Visit us:</b> 142 Willow Lane, Century City, CA 90210<br>• <b>Office hours:</b> Mon–Sat, 9am–6pm (visits welcome, no appointment needed)<br><br>Our chapel and reception lounge are step-free and fully accessible, with 60 free parking spaces on site."
-  },
-  military: {
-    patterns: ['military','veteran','army','navy','air force','service','honours','honors','flag'],
-    answer: "Yes — we arrange full military honours, flag presentation, bugler and honour guard coordination, and we help you claim veteran funeral benefits. We can also arrange a final resting place in a veterans’ cemetery. Ask to speak with Marcus Bell, our senior arranger who specialises in this."
-  },
-  faith: {
-    patterns: ['religion','faith','christian','muslim','islam','jewish','hindu','sikh','buddhist','multi-faith','cultural','tradition'],
-    answer: "We arrange services for every faith and none — Christian, Muslim, Jewish, Hindu, Sikh, Buddhist and secular. We work with your community, your leaders and your traditions, and we will follow the rites, readings and timing your faith requires. If you have specific requirements, tell us and we will make sure they are honoured exactly."
-  },
-  childloss: {
-    patterns: ['baby','infant','child','children','stillborn','young','small coffin'],
-    answer: "I’m so deeply sorry. We provide gentle, unhurried care for the smallest farewells, with specialist counsellors and <b>no cost for our professional services</b>. We will never rush you, and we will never leave you to carry this alone. Please call <a href='tel:0800000000'>0800 000 000</a> and ask for Naomi Century, our Head of Family Care."
-  },
-  facility: {
-    patterns: ['facility','chapel','lounge','parking','accessible','wheelchair','building','willow lane','capacity','how many people'],
-    answer: "Our home at 142 Willow Lane includes:<br><br>• A chapel that seats 140, with live streaming and a hearing loop<br>• A reception lounge that seats 120, with in-house catering and a licensed bar<br>• Two private family viewing rooms, open 24 hours<br>• A children’s quiet corner and a garden remembrance wall<br>• 60 free parking spaces and step-free access throughout<br><br>There is no reception desk — just a kettle, a sofa, and someone who will sit with you for as long as you need."
-  },
-  visit: {
-    patterns: ['come and see','look around','tour','see the place','before i need'],
-    answer: "Absolutely — many families tell us it helps to visit before they need us, just to see the place, have a cup of tea and know where things are. There is no obligation and no pressure of any kind. Drop in any day Monday–Saturday, 9am–6pm, or call <a href='tel:0800000000'>0800 000 000</a> to arrange a time that suits you."
-  },
-  about: {
-    patterns: ['who are you','about','story','history','how long','family run','daniel','century','trust','reviews'],
-    answer: "Century Funeral Services was founded in 1999 by Daniel Century, after his own mother’s funeral felt cold and impersonal. He promised no family would ever feel that alone again. Twenty-five years later we have cared for over <b>4,000 families</b>, we are still family-run, and Daniel still answers the phone at 3am. We hold a 4.9★ rating from 418 family reviews. You can read our full story on the <a href='#/about'>Our Story page</a>."
-  },
-  thanks: {
-    patterns: ['thank','thanks','thank you','appreciate','grateful','cheers'],
-    answer: "You are very welcome. Whatever you need, whenever you need it, we are here — day or night. If you would like to speak to a real person, please call <a href='tel:0800000000'>0800 000 000</a>. Take care of yourself. 🤍"
-  },
-  bye: {
-    patterns: ['bye','goodbye','see you','later','ok thanks','that’s all','thats all'],
-    answer: "Take care of yourself, and please do not hesitate to come back or call us any time. Our care line <a href='tel:0800000000'>0800 000 000</a> is always open. 🤍"
-  }
+  greeting: { patterns: ['hi','hello','hey','good morning','good afternoon','good evening','start','help me'], answer: "Hello, and thank you for reaching out. I’m here to help with anything you need to know about Century Funeral Services — our services, costs, pre-planning, or simply what to do next. What would you like to ask?" },
+  cost: { patterns: ['cost','price','prices','pricing','how much','afford','expensive','cheap','fee','fees','money','pay','payment','budget','plan cost','funeral cost'], answer: "Our plans start at three clear price points:<br><br>• <b>Essential</b> — $3,450 (direct cremation, no ceremony)<br>• <b>Serene</b> — $6,900 (full service, visitation, hearse, reception, live streaming)<br>• <b>Legacy</b> — $11,500 (everything, premium casket, two limousines, headstone allowance, 5-year grave care)<br><br>Every quote is itemised in writing with no hidden fees. <b>Interest-free payment plans over 12 months</b> are available on all plans. If cost is a concern, please tell us — we have never turned a family away over money. You can call <a href='tel:0800000000'>0800 000 000</a> or visit our <a href='#/preplanning'>Pre-Planning page</a>." },
+  services: { patterns: ['service','services','what do you do','offer','options','arrange','help with','provide','do you do'], answer: "We handle every kind of farewell, including:<br><br>• Traditional funeral service (church, chapel, graveside)<br>• Cremation — attended, unattended, or direct<br>• Burial &amp; graveside, including natural woodland burial<br>• Memorial &amp; celebration of life<br>• Repatriation &amp; long-distance transfer (domestic and overseas)<br>• Care &amp; preparation of your loved one<br>• Flowers, stationery, keepsakes, coffins &amp; urns<br>• Wake, venue &amp; catering<br>• Twelve months of grief support &amp; counselling<br><br>See the full detail on our <a href='#/services'>Services page</a>." },
+  cremation: { patterns: ['cremation','cremate','cremated','ashes','urn','scatter','scattering'], answer: "Yes, we arrange cremation in several forms:<br><br>• <b>Attended cremation</b> — a full service, then committal<br>• <b>Unattended cremation</b> — the service takes place separately<br>• <b>Direct cremation</b> — simple, dignified, no ceremony (from $3,450)<br><br>We offer over 60 urns, keepsake jewellery, scattering tubes and memorial plaques. Ashes can be scattered, interred, kept at home, or divided between family members in matching keepsakes. Ask us anything — there is no wrong question here." },
+  burial: { patterns: ['burial','bury','grave','graveside','cemetery','plot','headstone','natural burial','woodland'], answer: "We arrange burial in any cemetery, or in a natural woodland or meadow burial ground if you prefer. We handle plot selection, grave preparation, headstones, kerbing, inscriptions and long-term grave maintenance. The <b>Legacy plan</b> includes a $1,500 headstone allowance and five years of grave care. Would you like us to explain the difference between a traditional burial and a natural burial?" },
+  repatriation: { patterns: ['repatriation','repatriate','overseas','another country','abroad','fly','flight','transport','bring home','international'], answer: "Yes — we bring loved ones home from overseas, and take them to rest anywhere in the world. Our repatriation team handles embalming to international standards, consular and customs documentation, airline booking, sealed transfer caskets, and collection at the destination airport. This usually takes 5–10 days, and we keep you updated at every stage so you are never left wondering where they are. Call <a href='tel:0800000000'>0800 000 000</a> and ask for our repatriation team." },
+  availability: { patterns: ['24','hour','available','open','when','time','night','weekend','holiday','emergency','now','urgent','today'], answer: "We are available <b>24 hours a day, 365 days a year</b> — including weekends and public holidays. Our care line <a href='tel:0800000000'>0800 000 000</a> is always answered by a real, trained care director. Never a machine, never a queue, never a call centre. If someone has just died, please call us rather than using the website form." },
+  firststeps: { patterns: ['what do i do','first step','next step','someone died','died at home','just died','passed away','what now','how do i start','begin'], answer: "First — I’m so sorry. Take a breath. Here is what to do:<br><br>1. <b>Call us on <a href='tel:0800000000'>0800 000 000</a></b> — any hour, day or night. A care director will answer, listen, and tell you exactly what to do.<br>2. If the death was unexpected, call emergency services first, then call us.<br>3. We will come and bring your loved one into our care, discreetly and with dignity.<br>4. After that, we plan everything together, at your pace.<br><br>You do not need to know what you want yet. Just call. That is enough." },
+  preplanning: { patterns: ['preplan','pre-plan','pre plan','plan ahead','prepaid','prepay','arrange in advance','future','lock price','planning'], answer: "Pre-planning means choosing your wishes now, so your family is never left guessing. Families who pre-plan save an average of <b>32%</b> and lock in today’s prices. You choose music, readings, flowers, dress, burial or cremation — we write it down and keep it safe. Plans can be changed free of charge at any time.<br><br>Request a <b>free, no-obligation consultation</b> on our <a href='#/preplanning'>Pre-Planning page</a>, or call <a href='tel:0800000000'>0800 000 000</a>." },
+  grief: { patterns: ['grief','grieving','counselling','counseling','support','bereavement','therapy','cope','coping','alone','after the funeral'], answer: "Every family we serve receives <b>twelve months of complimentary grief support</b>, and it is not an add-on — it is part of how we care for you. This includes:<br><br>• One-to-one counselling (face-to-face or by phone)<br>• Family sessions<br>• Children’s and teenagers’ bereavement support<br>• Monthly remembrance evenings at our chapel<br>• A 24-hour listening line for the first year<br><br>There is no charge, no limit on sessions, and no pressure to talk. You can call <a href='tel:0800000000'>0800 000 000</a> any time." },
+  contact: { patterns: ['contact','call','phone','number','email','reach','address','where are you','location','visit','find you'], answer: "You can reach us any time:<br><br>• <b>24-hour care line:</b> <a href='tel:0800000000'>0800 000 000</a><br>• <b>Email:</b> care@centuryfuneralservices.com<br>• <b>Visit us:</b> 142 Willow Lane, Century City, CA 90210<br>• <b>Office hours:</b> Mon–Sat, 9am–6pm (visits welcome, no appointment needed)<br><br>Our chapel and reception lounge are step-free and fully accessible, with 60 free parking spaces on site." },
+  military: { patterns: ['military','veteran','army','navy','air force','service','honours','honors','flag'], answer: "Yes — we arrange full military honours, flag presentation, bugler and honour guard coordination, and we help you claim veteran funeral benefits. We can also arrange a final resting place in a veterans’ cemetery. Ask to speak with Marcus Bell, our senior arranger who specialises in this." },
+  faith: { patterns: ['religion','faith','christian','muslim','islam','jewish','hindu','sikh','buddhist','multi-faith','cultural','tradition'], answer: "We arrange services for every faith and none — Christian, Muslim, Jewish, Hindu, Sikh, Buddhist and secular. We work with your community, your leaders and your traditions, and we will follow the rites, readings and timing your faith requires. If you have specific requirements, tell us and we will make sure they are honoured exactly." },
+  childloss: { patterns: ['baby','infant','child','children','stillborn','young','small coffin'], answer: "I’m so deeply sorry. We provide gentle, unhurried care for the smallest farewells, with specialist counsellors and <b>no cost for our professional services</b>. We will never rush you, and we will never leave you to carry this alone. Please call <a href='tel:0800000000'>0800 000 000</a> and ask for Naomi Century, our Head of Family Care." },
+  facility: { patterns: ['facility','chapel','lounge','parking','accessible','wheelchair','building','willow lane','capacity','how many people'], answer: "Our home at 142 Willow Lane includes:<br><br>• A chapel that seats 140, with live streaming and a hearing loop<br>• A reception lounge that seats 120, with in-house catering and a licensed bar<br>• Two private family viewing rooms, open 24 hours<br>• A children’s quiet corner and a garden remembrance wall<br>• 60 free parking spaces and step-free access throughout<br><br>There is no reception desk — just a kettle, a sofa, and someone who will sit with you for as long as you need." },
+  visit: { patterns: ['come and see','look around','tour','see the place','before i need'], answer: "Absolutely — many families tell us it helps to visit before they need us, just to see the place, have a cup of tea and know where things are. There is no obligation and no pressure of any kind. Drop in any day Monday–Saturday, 9am–6pm, or call <a href='tel:0800000000'>0800 000 000</a> to arrange a time that suits you." },
+  about: { patterns: ['who are you','about','story','history','how long','family run','daniel','century','trust','reviews'], answer: "Century Funeral Services was founded in 1999 by Daniel Century, after his own mother’s funeral felt cold and impersonal. He promised no family would ever feel that alone again. Twenty-five years later we have cared for over <b>4,000 families</b>, we are still family-run, and Daniel still answers the phone at 3am. We hold a 4.9★ rating from 418 family reviews. You can read our full story on the <a href='#/about'>Our Story page</a>." },
+  thanks: { patterns: ['thank','thanks','thank you','appreciate','grateful','cheers'], answer: "You are very welcome. Whatever you need, whenever you need it, we are here — day or night. If you would like to speak to a real person, please call <a href='tel:0800000000'>0800 000 000</a>. Take care of yourself. 🤍" },
+  bye: { patterns: ['bye','goodbye','see you','later','ok thanks','that’s all','thats all'], answer: "Take care of yourself, and please do not hesitate to come back or call us any time. Our care line <a href='tel:0800000000'>0800 000 000</a> is always open. 🤍" }
 };
 
-/* ---- Chat behaviour ---- */
 const chatLauncher = $('#chatLauncher');
 const chatPanel = $('#chatPanel');
 const chatBody = $('#chatBody');
@@ -1948,7 +1898,6 @@ function addMsg(text, who = 'bot'){
   chatBody.appendChild(div);
   chatBody.scrollTop = chatBody.scrollHeight;
 }
-
 function showTyping(){
   const t = document.createElement('div');
   t.className = 'typing';
@@ -1961,7 +1910,6 @@ function hideTyping(){
   const t = $('#typingIndicator');
   if (t) t.remove();
 }
-
 function buildQuickReplies(){
   chatQuick.innerHTML = '';
   QUICK_QUESTIONS.forEach(q => {
@@ -1972,22 +1920,17 @@ function buildQuickReplies(){
     chatQuick.appendChild(b);
   });
 }
-
 function startChat(){
   setTimeout(() => {
     addMsg("Hello, and welcome to <b>Century Funeral Services</b>. I’m so sorry if you’re here because you’ve lost someone. 🤍<br><br>I can help with anything you’d like to know — our services, costs, pre-planning, or just what to do next. What’s on your mind?");
     buildQuickReplies();
   }, 350);
 }
-
 function findAnswer(input){
   const text = input.toLowerCase().trim();
   if (!text) return null;
-
-  // Direct-match intents in priority order (cost before services, etc.)
   const priority = ['firststeps','cost','preplanning','cremation','burial','repatriation','grief','availability','childloss','military','faith','facility','visit','contact','about','services','thanks','bye','greeting'];
   let best = null, bestScore = 0;
-
   for (const key of priority){
     const kb = KNOWLEDGE[key];
     if (!kb) continue;
@@ -1997,7 +1940,6 @@ function findAnswer(input){
       if (text === pat) score = 10;
       else if (text.includes(pat)) score = 5 + Math.min(pat.length / 10, 3);
       else {
-        // word-level fuzzy
         const words = pat.split(/\s+/);
         const hits = words.filter(w => w.length > 2 && text.includes(w)).length;
         if (hits) score = hits * 1.4;
@@ -2008,13 +1950,11 @@ function findAnswer(input){
   if (best && bestScore >= 1.3) return KNOWLEDGE[best].answer;
   return null;
 }
-
 function handleUserMessage(raw){
   const text = raw.trim();
   if (!text) return;
   addMsg(escapeHtml(text), 'user');
   showTyping();
-
   setTimeout(() => {
     hideTyping();
     const answer = findAnswer(text);
@@ -2026,7 +1966,6 @@ function handleUserMessage(raw){
     }
   }, 720 + Math.random() * 520);
 }
-
 function buildFollowUps(){
   chatQuick.innerHTML = '';
   ['What do I do first?','How much does it cost?','Do you offer cremation?','Are you open 24 hours?']
@@ -2038,12 +1977,10 @@ function buildFollowUps(){
       chatQuick.appendChild(b);
     });
 }
-
 function sendUserMessage(text){
   chatText.value = text;
   chatForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
 }
-
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
   const val = chatText.value.trim();
@@ -2051,25 +1988,43 @@ chatForm.addEventListener('submit', e => {
   chatText.value = '';
   handleUserMessage(val);
 });
-
 function escapeHtml(s){
   return s.replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
 }
 
 /* =========================================================
-   9. MISC
+   MISC
    ========================================================= */
 $('#year').textContent = new Date().getFullYear();
 
 /* =========================================================
-   10. BOOT
+   BOOT
    ========================================================= */
 route();
 buildCandles();
 initReveals();
 
-// hide chat badge after 20s of no interaction
 setTimeout(() => chatBadge.classList.add('hide'), 20000);
+
+/* =========================================================
+   FAILSAFE — content NEVER stays hidden
+   ========================================================= */
+setTimeout(() => {
+  $$('.reveal').forEach(el => el.classList.add('in'));
+}, 1200);
+
+window.addEventListener('load', () => {
+  $$('.reveal').forEach(el => el.classList.add('in'));
+});
+
+window.addEventListener('hashchange', () => {
+  setTimeout(() => {
+    $$('.reveal').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  }, 80);
+});
 </script>
 </body>
 </html>
